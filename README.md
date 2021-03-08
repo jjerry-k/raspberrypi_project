@@ -13,4 +13,4 @@
 
 ## Style transfer server 
 - **Complete**
-- [Try It !](jjerry.codns.com:5000)
+- [Try It !](http://jjerry.codns.com:5000)
