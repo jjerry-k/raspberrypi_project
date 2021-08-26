@@ -2,8 +2,10 @@
 ---
 
 ## Smart Mirror
-- In progress
 - Using Raspberry Pi Zero W
+- STEP 1: https://jjerry-k.github.io/blog/smartmirror/
+- STEP 2: https://jjerry-k.github.io/blog/smartmirror2/
+
 - [Reference](http://emmanuelcontreras.com/how-to/how-to-create-a-magic-mirror-2-with-pi-zero-w/)
 
 
@@ -14,4 +16,11 @@
 
 ## Style transfer server 
 - **Complete**
-- [Try It !](http://jjerry.codns.com:5000)
+- Repository: https://github.com/jjerry-k/learning_flask/tree/master/self_project/style_transfer
+
+
+## Face Detection
+- Using Camera Module v2
+
+## Coral USB
+- ...ing
