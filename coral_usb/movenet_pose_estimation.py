@@ -16,10 +16,11 @@ camera = PiCamera()
 camera.resolution = (256, 256)
 camera.framerate = 30
 camera.rotation = 180
+camera.hflip = True
 rawCapture = PiRGBArray(camera, size=camera.resolution)
 
 _NUM_KEYPOINTS = 17
-
+_PLOT_KEYPOINTS = 11
 time.sleep(0.1)
 
 
@@ -42,7 +43,7 @@ for frame in camera.capture_continuous(rawCapture, format="rgb", use_video_port=
     pose = common.output_tensor(interpreter, 0).copy().reshape(_NUM_KEYPOINTS, 3)
     draw = ImageDraw.Draw(frame)
     width, height = frame.size
-    for i in range(0, _NUM_KEYPOINTS):
+    for i in range(0, _PLOT_KEYPOINTS):
         draw.ellipse(
             xy=[
                 pose[i][1] * width - 2, pose[i][0] * height - 2,
@@ -57,7 +58,7 @@ for frame in camera.capture_continuous(rawCapture, format="rgb", use_video_port=
     fps = 1/(sec)
     str = "FPS : %0.1f" % fps
     cv.putText(frame, str, (0, 30), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0))
-    
+
     cv.imshow("Frame", frame)
     rawCapture.truncate(0)
     key = cv.waitKey(1) & 0xff

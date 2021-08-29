@@ -7,6 +7,7 @@ camera = PiCamera()
 camera.resolution = (256, 256)
 camera.framerate = 30
 camera.rotation = 180
+camera.hflip = True
 rawCapture = PiRGBArray(camera, size=camera.resolution)
 
 face_cascade = cv.CascadeClassifier('./haar/haarcascade_frontalface.xml')

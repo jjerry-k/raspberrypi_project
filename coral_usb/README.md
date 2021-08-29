@@ -13,7 +13,8 @@ pip install https://github.com/google-coral/pycoral/releases/download/v2.0.0/pyc
 pip install https://github.com/google-coral/pycoral/releases/download/v2.0.0/tflite_runtime-2.5.0.post1-cp37-cp37m-linux_armv7l.whl
 ```
 
-## Run the code
+
+## Classify bird
 
 ```
 python3 classify_image.py \
@@ -22,10 +23,7 @@ python3 classify_image.py \
   --input images/parrot.jpg
 ```
 
-<img width="200"
-     src="https://github.com/google-coral/edgetpu/raw/master/test_data/parrot.jpg" />
-<br><b>Figure 1.</b> parrot.jpg
-
+<img width="200" src="images/parrot.jpg">
 
 ```.language-bash
 Initializing TF Lite interpreter...
@@ -40,3 +38,10 @@ Note: The first inference on Edge TPU is slow because it includes loading the mo
 -------RESULTS--------
 Ara macao (Scarlet Macaw): 0.76562
 ```
+
+## Pose estimation
+``` bash
+python movenet_pose_estimation.py
+```
+
+<img width="400" src="result/pose_result.gif">
