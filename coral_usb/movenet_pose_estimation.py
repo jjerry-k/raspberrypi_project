@@ -26,7 +26,7 @@ time.sleep(0.1)
 
 
     
-interpreter = make_interpreter("models/movenet_single_pose_thunder_ptq_edgetpu.tflite")
+interpreter = make_interpreter("models/pose_estimation/movenet_single_pose_thunder_ptq_edgetpu.tflite")
 interpreter.allocate_tensors()
 
 
@@ -40,6 +40,7 @@ for frame in camera.capture_continuous(rawCapture, format="rgb", use_video_port=
     frame = frame.resize(common.input_size(interpreter), Image.ANTIALIAS)
     common.set_input(interpreter, frame)
     interpreter.invoke()
+    
     pose = common.output_tensor(interpreter, 0).copy().reshape(_NUM_KEYPOINTS, 3)
     draw = ImageDraw.Draw(frame)
     width, height = frame.size

@@ -18,8 +18,8 @@ pip install https://github.com/google-coral/pycoral/releases/download/v2.0.0/tfl
 
 ```
 python3 classify_image.py \
-  --model models/mobilenet_v2_1.0_224_inat_bird_quant_edgetpu.tflite \
-  --labels models/inat_bird_labels.txt \
+  --model models/classification/mobilenet_v2_1.0_224_inat_bird_quant_edgetpu.tflite \
+  --labels models/classification/inat_bird_labels.txt \
   --input images/parrot.jpg
 ```
 
@@ -45,3 +45,10 @@ python movenet_pose_estimation.py
 ```
 
 <img width="400" src="result/pose_result.gif">
+
+## Semantic segmentation
+``` bash
+python segment.py
+```
+
+<img width="400" src="result/segment_result.gif">
