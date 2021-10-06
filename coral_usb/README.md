@@ -8,16 +8,19 @@ sudo apt-get update
 
 sudo apt-get install libedgetpu1-std
 
+pip install https://github.com/google-coral/pycoral/releases/download/v2.0.0/tflite_runtime-2.5.0.post1-cp37-cp37m-linux_armv7l.whl
 pip install https://github.com/google-coral/pycoral/releases/download/v2.0.0/pycoral-2.0.0-cp37-cp37m-linux_armv7l.whl
 
-pip install https://github.com/google-coral/pycoral/releases/download/v2.0.0/tflite_runtime-2.5.0.post1-cp37-cp37m-linux_armv7l.whl
-```
+# 64 bit OS
+# pip install https://github.com/google-coral/pycoral/releases/download/v2.0.0/tflite_runtime-2.5.0.post1-cp37-cp37m-linux_aarch64.whl
+# pip install https://github.com/google-coral/pycoral/releases/download/v2.0.0/pycoral-2.0.0-cp37-cp37m-linux_aarch64.whl
 
+```
 
 ## Classify bird
 
 ```
-python3 classify_image.py \
+python classify_image.py \
   --model models/classification/mobilenet_v2_1.0_224_inat_bird_quant_edgetpu.tflite \
   --labels models/classification/inat_bird_labels.txt \
   --input images/parrot.jpg
