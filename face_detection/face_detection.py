@@ -14,12 +14,12 @@ time.sleep(0.1)
 
 prevTime = 0
 cap = cv.VideoCapture(0)
+rows, cols = 320, 320
 cap.set(cv.CAP_PROP_FRAME_WIDTH, 320)
 cap.set(cv.CAP_PROP_FRAME_HEIGHT, 320)
 while(True):
     ret, frame = cap.read()
-    rows, cols = frame.shape[:2]
-
+    
     # 이미지의 중심점을 기준으로 90도 회전 하면서 0.5배 Scale
     M= cv.getRotationMatrix2D((cols/2, rows/2),180, 1)
 
