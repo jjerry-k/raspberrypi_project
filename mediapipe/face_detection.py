@@ -1,15 +1,15 @@
-from picamera import PiCamera
-from picamera.array import PiRGBArray
+# from picamera import PiCamera
+# from picamera.array import PiRGBArray
 import time
 import cv2 as cv
 import mediapipe as mp
 
-camera = PiCamera()
-camera.resolution = (256, 256)
-camera.framerate = 30
-camera.rotation = 180
-camera.hflip = True
-rawCapture = PiRGBArray(camera, size=camera.resolution)
+# camera = PiCamera()
+# camera.resolution = (256, 256)
+# camera.framerate = 30
+# camera.rotation = 180
+# camera.hflip = True
+# rawCapture = PiRGBArray(camera, size=camera.resolution)
 
 mp_drawing = mp.solutions.drawing_utils
 mp_face_detection = mp.solutions.face_detection
@@ -17,11 +17,18 @@ mp_face_detection = mp.solutions.face_detection
 face_detection = mp_face_detection.FaceDetection(min_detection_confidence=0.5)
 drawing_spec = mp_drawing.DrawingSpec(color=(128,128,128), thickness=1, circle_radius=1)
 
+cap = cv.VideoCapture(0)
+cap.set(cv.CAP_PROP_FRAME_WIDTH, 320)
+cap.set(cv.CAP_PROP_FRAME_HEIGHT, 320)
 
 prevTime = 0
-for frame in camera.capture_continuous(rawCapture, format="rgb", use_video_port=True):
-    frame = frame.array
-    
+while(True):
+    ret, frame = cap.read()
+    rows, cols = frame.shape[:2]
+    # 이미지의 중심점을 기준으로 90도 회전 하면서 0.5배 Scale
+    M= cv.getRotationMatrix2D((cols/2, rows/2),180, 1)
+    frame = cv.warpAffine(frame, M, (cols, rows))
+
     # Insert FPS
     curTime = time.time()
     results = face_detection.process(frame)
@@ -41,7 +48,6 @@ for frame in camera.capture_continuous(rawCapture, format="rgb", use_video_port=
     cv.imshow('MediaPipe FaceDetection', frame)
     if cv.waitKey(1) & 0xFF == ord('q'):
         break
-    rawCapture.truncate(0)
     key = cv.waitKey(1) & 0xff
     if key==27:
         # Stop using ESC

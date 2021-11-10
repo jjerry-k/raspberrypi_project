@@ -1,13 +1,3 @@
-# from picamera import PiCamera
-# from picamera.array import PiRGBArray
-
-# camera = PiCamera()
-# camera.resolution = (256, 256)
-# camera.framerate = 30
-# camera.rotation = 180
-# camera.hflip = True
-# rawCapture = PiRGBArray(camera, size=camera.resolution)
-
 import time
 import cv2 as cv
 
@@ -24,9 +14,9 @@ time.sleep(0.1)
 
 prevTime = 0
 cap = cv.VideoCapture(0)
+cap.set(cv.CAP_PROP_FRAME_WIDTH, 320)
+cap.set(cv.CAP_PROP_FRAME_HEIGHT, 320)
 while(True):
-# for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-    # frame = frame.array
     ret, frame = cap.read()
     rows, cols = frame.shape[:2]
 
@@ -46,7 +36,6 @@ while(True):
     # Display frame
     cv.imshow("Frame", frame)
     
-    # rawCapture.truncate(0)
     key = cv.waitKey(1) & 0xff
     if key==27:
         # Stop using ESC
