@@ -1,0 +1,1 @@
+ssd_mobilenet_v2_face_quant_postprocess_edgetpu
