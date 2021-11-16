@@ -54,7 +54,7 @@ def main():
 
     # Run model
     while(True):
-        ret, image = cap.read()
+        _, image = cap.read()
         
         # 이미지의 중심점을 기준으로 90도 회전 하면서 0.5배 Scale
         image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
