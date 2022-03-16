@@ -16,11 +16,14 @@
 
 ## Style transfer server 
 - **Complete**
-- Repository: https://github.com/jjerry-k/learning_flask/tree/master/self_project/style_transfer
+- Repository: https://github.com/jjerry-k/style_transfer_web
 
 
 ## Face Detection
 - Using Camera Module v2
 
 ## Coral USB
+- ...ing
+
+## AI Speaker
 - ...ing
